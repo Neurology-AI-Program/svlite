@@ -19,6 +19,7 @@ from sklearn.preprocessing import StandardScaler,OneHotEncoder
 
 #local
 from svlite.data_structures._vector_table import VectorTable
+from svlite.data_structures._brain_table import BrainTable
 from svlite.data_structures._annotation_table import AnnotationTable
 
 
@@ -90,11 +91,25 @@ class VectorTransformer():
         assert isinstance(table, VectorTable), 'Input must be a VectorTable'
         x = table.to_numpy() 
         x_tf = self.base_model.transform(x, **kwargs)
-
         new_data = table.data.copy()
         new_data[table.feature_col] = list(x_tf)
-        new_t = table.copy()
-        new_t.data = new_data
+
+        if x.shape == x_tf.shape and isinstance(table, BrainTable):
+            new_t = BrainTable(
+                df = new_data,
+                brain_mask = table.brain_mask,
+                suvr_mask = table.suvr_mask,
+                subject_col = table.subject_col,
+                incident_date_col = table.incident_date_col,
+                feature_col = table.feature_col,
+                smoothing_fwhm = table.smoothing_fwhm,
+                resample_img = table.resample_img,
+                resample_affine = table.resample_affine,
+                serializable = table.serializable
+            )
+        else:
+            new_t = table.copy()
+            new_t.data = new_data
 
         return new_t
     
