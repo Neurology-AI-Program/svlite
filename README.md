@@ -1,7 +1,7 @@
 ## Metabolic brain image analysis in the StateViewer framework
 This tutorial is available as a public Kaggle kernel here: https://www.kaggle.com/code/lbvigilantdata/metabolic-brain-image-analysis-with-stateviewer/notebook
 
-This tutorial will review the analysis of metabolic (that is fluorodeoxyglucose positron emission tomography, FDG-PET) brain imaging within the framework of StateViewer, a clinical decision support tool for assisting in the diagnosis of neurodegenerative diseases [1]. This tutorial will utilize a set of **synthetic** (read: not real) but fairly realistic FDG-PET brain images that approximate the features found across a wide spectrum of clinical neurodegenerative diagnoses:
+This tutorial will review the analysis of metabolic (that is fluorodeoxyglucose positron emission tomography, FDG-PET) brain imaging within the framework of StateViewer, a clinical decision support tool for assisting in the diagnosis of neurodegenerative diseases. This tutorial will utilize a set of **synthetic** (read: not real) but fairly realistic FDG-PET brain images that approximate the features found across a wide spectrum of clinical neurodegenerative diagnoses:
 * Alzheimer's disease (ad)
 * Behavioral variant frontotemporal dementia (bvftd)
 * Corticobasal syndrome (cbs)
@@ -12,7 +12,7 @@ This tutorial will review the analysis of metabolic (that is fluorodeoxyglucose 
 * Semantic dementia (sd)
 * Progressive supranuclear palsy (psp)
 
-Examples representing cases with no known neurodegeneration (cognitively unimpaired, cu) are also provided. All images have been registered to the MCALT template space [2]. 
+Examples representing cases with no known neurodegeneration (cognitively unimpaired, cu) are also provided. All images have been registered to the MCALT template space. 
 
 We will start by installing a few dependencies, as well as the python library `svlite`, which provides the core data types and funtions used in the StateViewer analyses. 
 
