@@ -1,10 +1,12 @@
 ## Metabolic brain image analysis in the StateViewer framework
+This tutorial is available as a public Kaggle kernel here: https://www.kaggle.com/code/lbvigilantdata/metabolic-brain-image-analysis-with-stateviewer/notebook
+
 This tutorial will review the analysis of metabolic (that is fluorodeoxyglucose positron emission tomography, FDG-PET) brain imaging within the framework of StateViewer, a clinical decision support tool for assisting in the diagnosis of neurodegenerative diseases [1]. This tutorial will utilize a set of **synthetic** (read: not real) but fairly realistic FDG-PET brain images that approximate the features found across a wide spectrum of clinical neurodegenerative diagnoses:
 * Alzheimer's disease (ad)
 * Behavioral variant frontotemporal dementia (bvftd)
 * Corticobasal syndrome (cbs)
 * Dementia with Lewy bodies (dlb)
-* Logopenic variange primary progressive aphasia (lvppa)
+* Logopenic variant primary progressive aphasia (lvppa)
 * Nonfluent primary progressive aphasia (nfppa)
 * Posterior cortical atrophy (pca)
 * Semantic dementia (sd)
@@ -22,12 +24,6 @@ We will start by installing a few dependencies, as well as the python library `s
 !pip install seaborn==0.13.2 --quiet
 !pip install git+https://github.com/Neurology-AI-Program/svlite.git --quiet
 ```
-
-    [31mERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
-    ydata-profiling 4.6.4 requires numpy<1.26,>=1.16.0, but you have numpy 1.26.4 which is incompatible.
-    ydata-profiling 4.6.4 requires seaborn<0.13,>=0.10.1, but you have seaborn 0.13.2 which is incompatible.[0m[31m
-    [0m
-
 
 ```python
 import pandas as pd
@@ -57,7 +53,7 @@ from svlite.graphical import KNeighbors, BrainGraph, score_holdout, report_metri
 ```
 
 ### Data set description
-The provided data includes a total of 1500 synthetic FDG-PET NiFTI1 image files split into 3 groups called the zscore set, the pca set, and the model set, the meaning of which will become clear later. Each set of images also has a corresponding csv file containing diagnostic catagories represented by each image. A few image files necessary for processing and aanalysis are also provided.
+The provided data includes a total of 1500 synthetic FDG-PET NiFTI1 image files split into 3 groups called the zscore set, the pca set, and the model set, the meaning of which will become clear later. Each set of images also has a corresponding csv file containing diagnostic catagories represented by each image. A few image files necessary for processing and analysis are also provided.
 
 Let's begin by locating the data and plotting one of the images using `nilearn`.
 
@@ -101,19 +97,7 @@ model_df.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -390,19 +374,7 @@ B_model_suvr.data.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -711,19 +683,7 @@ model_features.data.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -974,19 +934,7 @@ sens_calls.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1086,19 +1034,7 @@ prec_calls.head()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
